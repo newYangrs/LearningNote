@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<opml version="2.0">
+  <head>
+    <title></title>
+    <dateModified></dateModified>
+    <ownerName></ownerName>
+  </head>
+  <body>
+<outline text="排序算法">
+  <outline text="一、快速排序——基于分治思想" _note="-   **思路：**&#10;&#10;    1.  确认分界点，q\[l\]、q\[r\]、q\[(l+r)/2\]、随机&#10;&#10;    2.  划分区间&#10;&#10;    3.  递归处理左右两段&#10;&#10;-   **模板：**&#10;&#10;        void quick_sort(int q[], int l, int r)&#10;        {&#10;            if (l &gt;= r) return;&#10;&#10;            int i = l - 1, j = r + 1, x = q[l + r &gt;&gt; 1];	//建议使用q[l+r&gt;&gt;1]做分界点，&#10;            while (i &lt; j)									//防止边界问题。&#10;            {&#10;                do i ++ ; while (q[i] &lt; x);&#10;                do j -- ; while (q[j] &gt; x);&#10;                if (i &lt; j) swap(q[i], q[j]);&#10;            }&#10;            quick_sort(q, l, j), quick_sort(q, j + 1, r);&#10;        }">
+  </outline>
+  <outline text="二、归并排序——基于分治思想" _note="-   **思路：**&#10;&#10;    1.  确认分界点，mid=(l+r)/2&#10;&#10;    2.  递归排序&#10;&#10;    3.  归并——将两个有序序列合并成一个&#10;&#10;-   **模板：**&#10;&#10;        void merge_sort(int q[], int l, int r)&#10;        {&#10;            if (l &gt;= r) return;&#10;&#10;            int mid = l + r &gt;&gt; 1;&#10;            merge_sort(q, l, mid);&#10;            merge_sort(q, mid + 1, r);&#10;&#10;            int k = 0, i = l, j = mid + 1;&#10;            while (i &lt;= mid &amp;&amp; j &lt;= r)&#10;                if (q[i] &lt;= q[j]) tmp[k ++ ] = q[i ++ ];&#10;                else tmp[k ++ ] = q[j ++ ];&#10;&#10;            while (i &lt;= mid) tmp[k ++ ] = q[i ++ ];&#10;            while (j &lt;= r) tmp[k ++ ] = q[j ++ ];&#10;&#10;            for (i = l, j = 0; i &lt;= r; i ++, j ++ ) q[i] = tmp[j];&#10;        }">
+  </outline>
+</outline>
+  </body>
+</opml>

@@ -1,0 +1,65 @@
+## gdb相关
+
+### 1.gdb的一般使用过程
+
+```c++
+gcc -g main.c -o a.out //在使用gdb调试之前需要使用 -g 生成可调试文件。
+    
+gdb a.out  //用gdb打开可调式文件
+
+list1 //从第一行开始查看代码，按 l 翻页
+    
+break 52 //在52行设置断点
+    
+run //全速跑程序，可用 run 检查段错误
+    
+n/s //如果遇到系统函数，无法跳出，使用 n 或 s 
+    
+p i  //打印变量 i 的值
+    
+continue //没有断点则跑完剩下的程序  
+    
+set args aa bb cc //设置命令行参数
+    
+run args[1] args[2] args[3] //设置命令行参数
+    
+b 20 if i = 5 //条件断点，在循环语句总使用
+    
+ptype j //查看变量 j 的类型
+    
+q //退出gdb    
+```
+
+
+
+### 2.gdb常用操作
+
+|       操作        | 简写 |                          功能                          |
+| :---------------: | :--: | :----------------------------------------------------: |
+|       help        |  h   |                    按模块列出命令类                    |
+|     helpclass     |      |                 查看某一类型的具体命令                 |
+|       list        |  l   |               查看代码，可跟行号和函数名               |
+|       quit        |  q   |                          退出                          |
+|        run        |  r   |                      全速运行gdb                       |
+|       start       |      |          单步执行，运行程序，停留在第一行程序          |
+|       next        |  n   |                       逐过程执行                       |
+|       step        |  s   |          逐语句执行，遇到函数，调到函数内执行          |
+|     backtrace     |  bt  |              查看函数调用的栈帧和层级关系              |
+|       info        |  i   |      查看gdb内部局部变量的数值，`info printpoint`      |
+|       frame       |  f   |                     切换函数的栈帧                     |
+|      finish       |      |              结束当前函数，返回函数调用点              |
+|        set        |      |             设置变量的值， `set var n=100`             |
+|  run argv[1] ...  |      |                    调试时命令行传参                    |
+|       print       |  p   |                     打印变量和地址                     |
+|       break       |  b   |                根据行号和函数名设置断点                |
+|      delete       |  d   |              删除断点 `d breakpoint num`               |
+|      display      |      |                      设置观察变量                      |
+|     undisplay     |      |                      取消观察变量                      |
+|     continue      |  c   |                 继续全速运行剩下的代码                 |
+| enable breakpoint |      |                        启用断点                        |
+| diable breakpoint |      |                        禁用断点                        |
+|         x         |      |                        查看内存                        |
+|       watch       |      |         设置观察点的变量，发生修改使，打印显示         |
+|      i watch      |      |                       显示观察点                       |
+|       core        |      | `ulimit -c 1024` 开启core文件，调试时 `gdb a.out core` |
+
